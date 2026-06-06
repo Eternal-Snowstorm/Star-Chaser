@@ -11,7 +11,7 @@ public class SCToolTiers {
 	public static final Tier FLINT;
 
 	static {
-		FLINT = TierBuilder.create(builder -> {
+		FLINT = TierBuilder.create((builder) -> {
 			builder.setName(StarChaser.loadResource("flint"))
 					.setLevel(1)
 					.setUses(64)
