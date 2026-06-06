@@ -85,6 +85,10 @@ repositories {
 		url 'https://modmaven.dev/'
 	}
 	maven {
+		name = "reposiliteRepositoryReleases"
+		url = uri("https://maven.lirxowo.com/releases")
+	}
+	maven {
 		name 'Tterrag Maven'
 		url 'https://maven.tterrag.com/'
 	}
@@ -112,12 +116,20 @@ repositories {
 		name = 'Latvian Mods (KubeJS, Rhino)'
 	}
 	maven {
+		name = "V姐"
+		url = "https://maven.blamejared.com"
+	}
+	maven {
 		url = 'https://maven.architectury.dev/'
 		name = 'Architectury'
 	}
 }
 
 dependencies {
+	// Nebula Libs
+	implementation("dev.celestiacraft:nebula_libs:${nebula_lib_version}:dev") { transitive = false }
+	jarJar(group: "dev.celestiacraft", name: "nebula_libs", version: "[${nebula_lib_version}]") { transitive = false }
+
 	// Create + Flywheel + Registrate
 	implementation fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
 	implementation fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
@@ -137,6 +149,10 @@ dependencies {
 	// Jade
 	implementation fg.deobf("curse.maven:jade-324717:6106101")
 	implementation fg.deobf("curse.maven:jade-addons-583345:8203724")
+
+	// Patchouli
+	compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE:api")
+	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE")
 
 	// KubeJS
 	implementation fg.deobf("dev.architectury:architectury-forge:9.2.14")
